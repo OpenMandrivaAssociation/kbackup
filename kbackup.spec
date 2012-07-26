@@ -1,13 +1,13 @@
 # Spec is based on Giovanni Mariani's work in MIB
 
 Name:		kbackup
-Version:	0.7.1
-Release:	%mkrel 1
+Version:	0.8
+Release:	1
 Summary:	A simple and easy to use program to backup directories or files
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		http://www.kde-apps.org/content/show.php?action=content&content=44998
-Source0:	%{name}-%{version}.tar.bz2
+Source0:	http://members.aon.at/m.koller/%{name}-%{version}.tar.bz2
 BuildRequires:	cmake
 # From configure output
 BuildRequires:	shared-mime-info >= 0.71
@@ -43,12 +43,7 @@ desktop-file-install \
 	--dir %{buildroot}%{_kde_applicationsdir} \
 	%{buildroot}%{_kde_applicationsdir}/%{name}.desktop
 
-%clean
-%__rm -rf %{buildroot}
-
-
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %{_kde_bindir}/%{name}
 %{_kde_applicationsdir}/%{name}.desktop
 %{_kde_appsdir}/%{name}/icons/hicolor/22x22/*/*
