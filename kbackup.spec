@@ -51,3 +51,14 @@ desktop-file-install \
 %{_kde_appsdir}/%{name}/*.rc
 %{_kde_datadir}/mime/packages/%{name}.xml
 
+
+
+%changelog
+* Thu Jul 26 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.8-1
++ Revision: 811141
+- version update 0.8
+
+* Wed Mar 07 2012 Andrey Bondrov <abondrov@mandriva.org> 0.7.1-1
++ Revision: 782685
+- imported package kbackup
+
