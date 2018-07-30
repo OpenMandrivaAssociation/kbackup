@@ -1,18 +1,27 @@
-# Spec is based on Giovanni Mariani's work in MIB
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		kbackup
-Version:	0.8
-Release:	2
+Version:	18.07.80
+Release:	1
 Summary:	A simple and easy to use program to backup directories or files
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		http://www.kde-apps.org/content/show.php?action=content&content=44998
-Source0:	http://members.aon.at/m.koller/%{name}-%{version}.tar.bz2
+Source0:	https://download.kde.org/%{stable}/applications/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	cmake
-# From configure output
+BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(Qt5Core)
+BuildRequires:	cmake(Qt5Widgets)
+BuildRequires:	cmake(KF5Notifications)
+BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5KIO)
+BuildRequires:	cmake(KF5DocTools)
+BuildRequires:	cmake(KF5XmlGui)
+BuildRequires:	cmake(KF5IconThemes)
+BuildRequires:	cmake(KF5Archive)
+BuildRequires:	cmake(KF5WidgetsAddons)
+BuildRequires:	cmake(SharedMimeInfo)
 BuildRequires:	shared-mime-info >= 0.71
-BuildRequires:	kdelibs4-devel
-BuildRequires:	qt4-devel
 BuildRequires:	desktop-file-utils
 
 %description
@@ -24,41 +33,21 @@ TAR format, whereby the data is still stored in compressed format (bzip2
 or gzip).
 
 %prep
-%setup -q
+%autosetup -p1
+%cmake_kde5
 
 %build
-%cmake_kde4
-%make
+%ninja_build -C build
 
 %install
-%__rm -rf %{buildroot}
-
-%makeinstall_std -C build
+%ninja_install -C build
 
 %find_lang %{name} --with-html
 
-desktop-file-install \
-	--remove-category="X-SuSE-Backup" \
-	--add-category="Archiving" \
-	--dir %{buildroot}%{_kde_applicationsdir} \
-	%{buildroot}%{_kde_applicationsdir}/%{name}.desktop
-
 %files -f %{name}.lang
-%{_kde_bindir}/%{name}
-%{_kde_applicationsdir}/%{name}.desktop
-%{_kde_appsdir}/%{name}/icons/hicolor/22x22/*/*
-%{_kde_iconsdir}/hicolor/*/*/*
-%{_kde_appsdir}/%{name}/*.rc
-%{_kde_datadir}/mime/packages/%{name}.xml
-
-
-
-%changelog
-* Thu Jul 26 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.8-1
-+ Revision: 811141
-- version update 0.8
-
-* Wed Mar 07 2012 Andrey Bondrov <abondrov@mandriva.org> 0.7.1-1
-+ Revision: 782685
-- imported package kbackup
-
+%{_bindir}/%{name}
+%{_datadir}/applications/org.kde.%{name}.desktop
+%{_datadir}/icons/*/*/*/*
+%{_datadir}/mime/packages/%{name}.xml
+%{_datadir}/kxmlgui5/kbackup/kbackupui.rc
+%{_datadir}/metainfo/org.kde.kbackup.appdata.xml
