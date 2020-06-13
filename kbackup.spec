@@ -1,7 +1,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		kbackup
-Version:	20.04.1
+Version:	20.04.2
 Release:	1
 Summary:	A simple and easy to use program to backup directories or files
 License:	GPLv2
@@ -42,7 +42,7 @@ or gzip).
 %install
 %ninja_install -C build
 
-%find_lang %{name} --with-html
+%find_lang %{name} --with-html --all-name
 
 %files -f %{name}.lang
 %{_bindir}/%{name}
