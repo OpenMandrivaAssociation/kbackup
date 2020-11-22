@@ -1,7 +1,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		kbackup
-Version:	20.08.3
+Version:	20.11.80
 Release:	1
 Summary:	A simple and easy to use program to backup directories or files
 License:	GPLv2
@@ -42,7 +42,7 @@ or gzip).
 %install
 %ninja_install -C build
 
-%find_lang %{name} --with-html --all-name
+%find_lang %{name} --with-html --all-name --with-man
 
 %files -f %{name}.lang
 %{_bindir}/%{name}
@@ -51,3 +51,4 @@ or gzip).
 %{_datadir}/mime/packages/%{name}.xml
 %{_datadir}/kxmlgui5/kbackup/kbackupui.rc
 %{_datadir}/metainfo/org.kde.kbackup.appdata.xml
+%{_mandir}/man1/kbackup.1*
