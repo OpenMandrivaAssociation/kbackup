@@ -1,7 +1,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		kbackup
-Version:	21.04.2
+Version:	21.07.90
 Release:	1
 Summary:	A simple and easy to use program to backup directories or files
 License:	GPLv2
