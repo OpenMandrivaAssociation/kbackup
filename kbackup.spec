@@ -21,6 +21,7 @@ BuildRequires:	cmake(KF5IconThemes)
 BuildRequires:	cmake(KF5Archive)
 BuildRequires:	cmake(KF5WidgetsAddons)
 BuildRequires:	cmake(SharedMimeInfo)
+BuildRequires:	pkgconfig(libarchive)
 BuildRequires:	shared-mime-info >= 0.71
 BuildRequires:	desktop-file-utils
 
