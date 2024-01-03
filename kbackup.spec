@@ -2,7 +2,7 @@
 
 Name:		kbackup
 Version:	23.08.4
-Release:	1
+Release:	2
 Summary:	A simple and easy to use program to backup directories or files
 License:	GPLv2
 Group:		Archiving/Backup
