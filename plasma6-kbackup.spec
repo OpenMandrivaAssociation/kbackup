@@ -20,6 +20,7 @@ BuildRequires:	cmake(KF6XmlGui)
 BuildRequires:	cmake(KF6IconThemes)
 BuildRequires:	cmake(KF6Archive)
 BuildRequires:	cmake(KF6WidgetsAddons)
+BuildRequires:	cmake(KF6StatusNotifierItem)
 BuildRequires:	cmake(SharedMimeInfo)
 BuildRequires:	pkgconfig(libarchive)
 BuildRequires:	shared-mime-info >= 0.71
