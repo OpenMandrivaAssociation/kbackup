@@ -11,6 +11,7 @@ Source0:	https://download.kde.org/%{stable}/release-service/%{version}/src/kback
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt6Core)
+BuildRequires:	cmake(Qt6Core5Compat)
 BuildRequires:	cmake(Qt6Widgets)
 BuildRequires:	cmake(KF6Notifications)
 BuildRequires:	cmake(KF6I18n)
