@@ -1,8 +1,8 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		plasma6-kbackup
-Version:	24.01.90
-Release:	2
+Version:	24.01.95
+Release:	1
 Summary:	A simple and easy to use program to backup directories or files
 License:	GPLv2
 Group:		Archiving/Backup
