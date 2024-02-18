@@ -1,13 +1,20 @@
+%define git 20240218
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		plasma6-kbackup
-Version:	24.01.95
-Release:	1
+Version:	24.01.96
+Release:	%{?git:0.%{git}.}1
 Summary:	A simple and easy to use program to backup directories or files
 License:	GPLv2
 Group:		Archiving/Backup
 URL:		http://www.kde-apps.org/content/show.php?action=content&content=44998
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/utilities/kbackup/-/archive/%{gitbranch}/kbackup-%{gitbranchd}.tar.bz2#/kbackup-%{git}.tar.bz2
+%else
 Source0:	https://download.kde.org/%{stable}/release-service/%{version}/src/kbackup-%{version}.tar.xz
+%endif
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt6Core)
@@ -36,7 +43,7 @@ TAR format, whereby the data is still stored in compressed format (bzip2
 or gzip).
 
 %prep
-%autosetup -p1 -n kbackup-%{?git:master}%{!?git:%{version}}
+%autosetup -p1 -n kbackup-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja
