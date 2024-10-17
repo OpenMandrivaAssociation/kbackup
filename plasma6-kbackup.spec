@@ -9,7 +9,7 @@ Release:	%{?git:0.%{git}.}1
 Summary:	A simple and easy to use program to backup directories or files
 License:	GPLv2
 Group:		Archiving/Backup
-URL:		http://www.kde-apps.org/content/show.php?action=content&content=44998
+URL:		https://www.kde-apps.org/content/show.php?action=content&content=44998
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/utilities/kbackup/-/archive/%{gitbranch}/kbackup-%{gitbranchd}.tar.bz2#/kbackup-%{git}.tar.bz2
 %else
