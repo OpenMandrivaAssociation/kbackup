@@ -6,7 +6,7 @@ Release:	1
 Summary:	A simple and easy to use program to backup directories or files
 License:	GPLv2
 Group:		Archiving/Backup
-URL:		http://www.kde-apps.org/content/show.php?action=content&content=44998
+URL:		https://www.kde-apps.org/content/show.php?action=content&content=44998
 Source0:	https://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
