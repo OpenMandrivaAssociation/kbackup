@@ -3,7 +3,7 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
-Name:		plasma6-kbackup
+Name:		kbackup
 Version:	25.04.0
 Release:	%{?git:0.%{git}.}1
 Summary:	A simple and easy to use program to backup directories or files
