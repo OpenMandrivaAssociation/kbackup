@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:		kbackup
-Version:	25.04.0
+Version:	25.04.3
 Release:	%{?git:0.%{git}.}1
 Summary:	A simple and easy to use program to backup directories or files
 License:	GPLv2
@@ -34,6 +34,11 @@ BuildRequires:	pkgconfig(libarchive)
 BuildRequires:	shared-mime-info >= 0.71
 BuildRequires:	desktop-file-utils
 
+%rename plasma6-kbackup
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+
 %description
 KBackup is a program that lets you back up any directories or files,
 whereby it uses an easy to use directory tree to select the things to
@@ -41,20 +46,6 @@ back up. The program was designed to be very simple in its use so that it
 can be used by non-computer experts. The storage format is the well known
 TAR format, whereby the data is still stored in compressed format (bzip2
 or gzip).
-
-%prep
-%autosetup -p1 -n kbackup-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-
-%find_lang %{name} --with-html --all-name --with-man
 
 %files -f %{name}.lang
 %{_bindir}/kbackup
